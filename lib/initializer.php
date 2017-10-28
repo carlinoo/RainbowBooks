@@ -4,8 +4,14 @@
     */
 
 
+    // This function will generate the entire app
+    function render() {
+      $app = new App();
+    }
+
+
     // This function will singularize any word to get the model name of a controller
-    function get_model_name($params) {
+    function singularize($params) {
     if (is_string($params)) {
         $word = $params;
     } else if (!$word = $params['word']) {

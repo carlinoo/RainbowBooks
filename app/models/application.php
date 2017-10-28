@@ -3,7 +3,9 @@
   class Application {
 
     public static function all() {
-      echo "sdfd";
+      $class = get_called_class();
+
+      
     }
 
   }
