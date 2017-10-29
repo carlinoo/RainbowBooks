@@ -9,8 +9,8 @@
 
 
     // This action is the main page of the application
-    public function index($var1 = 'Jon') {
-      $this->model('home');
+    public function index() {
+      model('home');
       require_once("app/views/home/index.php");
     }
   }

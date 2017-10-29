@@ -15,6 +15,7 @@
       // Check if the controller file exists
       if (file_exists('app/controllers/' . $url[0] . '_controller.php')) {
         $this->controller = $url[0];
+        $_GET['controller'] = $url[0];
         unset($url[0]);
       }
 
@@ -22,13 +23,14 @@
       require_once('app/controllers/' . $this->controller . '_controller.php');
       $this->controller = ucfirst($this->controller) . "Controller";
       $this->controller = new $this->controller;
-;
+
 
 
       // Now we check the action of that controller exists
       if (isset($url[1])) {
         if (method_exists($this->controller, $url[1])) {
           $this->action = $url[1];
+          $_GET['action'] = $url[1];
           unset($url[1]);
         }
       }
@@ -36,7 +38,7 @@
       // Now we check if there are any params, and if there are, add them to the array $params
       $this->params = $url ? array_values($url) : [];
 
-      // We call the class, with its action and its params
+      // We call the controller, with its action and its params
       call_user_func_array([$this->controller, $this->action], $this->params);
     }
 
