@@ -9,8 +9,8 @@
       $all = [];
       $db = DB::connect();
 
-      $results = $db->prepare('SELECT * FROM Book');
-      $results->bindParam(':object', $class);
+      // We dont bind the param $class as it is only the caller of this function
+      $results = $db->prepare('SELECT * FROM ' . $class);
       $results->execute();
       $results = $results->fetchAll();
 
@@ -24,6 +24,47 @@
       }
 
       return $all;
+    } // end all()
+
+
+
+    // This method will return an object queried from the database
+    public static function find($id, $column = false) {
+      $class = get_called_class();
+      $db = DB::connect();
+
+      // If $column is set, add change the condition
+      if ($column == false) {
+        $column = "id";
+      }
+
+      // Check that $column exists on the table
+      if (!in_array($column, $class::get_column_names())) {
+        return null;
+      }
+
+      $result = $db->prepare('SELECT * FROM ' . $class . ' WHERE ' . $column . ' = :id');
+      $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+      $result->execute();
+
+      $result = $result->fetch(PDO::FETCH_ASSOC);
+
+      return new $class($result);
+    }
+
+
+
+    // This will retrieve all columns from a table
+    public static function get_column_names() {
+      $class = get_called_class();
+      $db = DB::connect();
+
+      $result = $db->prepare('DESCRIBE ' . $class);
+      $result->execute();
+      $result = $result->fetchAll(PDO::FETCH_COLUMN);
+
+      return $result;
     }
 
   }

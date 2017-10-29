@@ -5,7 +5,7 @@
     // This action will display all the books available in the bookstore
     public function index() {
       $model = $this->model('book');
-      $books = Book::all();
+      $books = Book::find(3, 'edition');
       var_dump($books);
     }
   }
