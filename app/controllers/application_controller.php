@@ -14,6 +14,10 @@
     protected function render_view($view, $params = []) {
       require_once('app/views/' . $view . '.php');
     }
+
+    protected function no_render() {
+      header('Location: index.php');
+    }
   }
 
 

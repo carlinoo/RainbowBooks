@@ -11,8 +11,6 @@
     // This action is the main page of the application
     public function index($var1 = 'Jon') {
       $this->model('home');
-
-      Home::all();
       require_once("app/views/home/index.php");
     }
   }
