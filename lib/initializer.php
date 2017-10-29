@@ -14,6 +14,51 @@
     }
 
 
+    // This function will return the current user
+    function current_user() {
+      if (user_signed_in()) {
+        return  User::find($_SESSION['username'], 'username');
+      } else {
+        return null;
+      }
+    }
+
+
+
+    // This function will logout a user
+    function destroy_session() {
+      if(session_destroy()) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+
+
+    // This function will return wheather a user is signed in
+    function user_signed_in() {
+      model('user');
+
+      // Check if the session is set
+      if (!isset($_SESSION['username'])) {
+        return false;
+      }
+
+      // Get the user from the database
+      $user = User::find($_SESSION['username'], 'username');
+
+      // If there is no record of the user on the database
+      if (!$user) {
+        session_destroy();
+        return false;
+      }
+
+      return true;
+    }
+
+
+
     // This function add assets to the application
     function add_assets() {
       // application.css

@@ -52,6 +52,11 @@
 
       $result = $result->fetch(PDO::FETCH_ASSOC);
 
+      // If the is no result
+      if (!$result) {
+        return false;
+      }
+
       return new $class($result);
     } // end find()
 
