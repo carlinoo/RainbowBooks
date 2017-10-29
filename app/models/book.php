@@ -1,4 +1,7 @@
 <?php
+
+  model('category');
+
   class Book extends Application {
     public $ISBN;
     public $title;
@@ -6,7 +9,8 @@
     public $edition;
     public $year;
     public $category;
-    public $reerved;
+    public $reserved;
+
 
     // Constructor function that takes all the variables as an argument
     function __construct($arr = null) {
@@ -14,10 +18,12 @@
         $this->ISBN = $arr['ISBN'];
         $this->title = $arr['title'];
         $this->author = $arr['author'];
-        $this->edition = $arr['edition'];
-        $this->year = $arr['year'];
-        $this->category = $arr['category'];
-        $this->reserved = $arr['reserved'];
+        $this->edition = (int)$arr['edition'];
+        $this->year = (int)$arr['year'];
+        $this->category = Category::find((int)$arr['category']);
+        $this->reserved = (boolean)$arr['reserved'];
+
+
       }
     }
   }

@@ -28,13 +28,15 @@
 
 
 
+
+
     // This method will return an object queried from the database
     public static function find($id, $column = false) {
       $class = get_called_class();
       $db = DB::connect();
 
       // If $column is set, add change the condition
-      if ($column == false) {
+      if (!$column) {
         $column = "id";
       }
 
@@ -51,7 +53,9 @@
       $result = $result->fetch(PDO::FETCH_ASSOC);
 
       return new $class($result);
-    }
+    } // end find()
+
+
 
 
 
@@ -65,6 +69,13 @@
       $result = $result->fetchAll(PDO::FETCH_COLUMN);
 
       return $result;
+    } // end get_column_names()
+
+
+
+    // The following will add Relations
+    public static function has_one($relation) {
+      require_once($relation);
     }
 
   }
