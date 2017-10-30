@@ -14,8 +14,6 @@
       $results->execute();
       $results = $results->fetchAll();
 
-      echo "<br><br><br>" . count($results) . "<br><br>";
-
       // We create a list of the objects from the database results
       foreach($results as $obj) {
         $item = new $class($obj);
@@ -346,6 +344,7 @@
 
       return true;
     }
+
   }
 
 

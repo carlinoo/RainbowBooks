@@ -68,6 +68,7 @@
     // This function will logout a user
     function destroy_session() {
       if(session_destroy()) {
+        unset($_SESSION['username']);
         return true;
       } else {
         return false;
@@ -105,13 +106,22 @@
     }
 
 
+    // This function return the image path of an image passed as an argument
+    function image_path($string) {
+      return $_ENV['root_dir'] . 'public/assets/images/' . $string;
+    }
+
 
     // This function will redirect the user somewhere
     function redirect_to($string = null) {
       if ($string == null || $string == '' || $string == '/' || $string == 'root') {
         header('Location: ' . path(''));
+        die();
+        exit();
       } else {
         header('Location: ' . path($string));
+        die();
+        exit();
       }
     }
 

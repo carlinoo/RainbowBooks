@@ -2,6 +2,10 @@
 
   class UserController extends ApplicationController {
 
+    // Having the Constructor will avoid the ApplicationController's constructor to run
+    public function __construct() {
+
+    }
 
     // This method will sign out a user
     public function destroy_session() {
@@ -15,6 +19,9 @@
 
     // This action is where the user will be able to log in
     public function log_in() {
+      // Only let do this to not logged in users
+      self::guest_restricted_only();
+
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // If username and password fields have been passed as params
@@ -43,6 +50,10 @@
 
     // This action is where the user will be able to sign up
     public function sign_up() {
+      
+      // Only let do this to not logged in users
+      self::guest_restricted_only();
+
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // If the user entered all values, and $_POST keys match the User attributes except for the 'id' attribute

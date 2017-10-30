@@ -5,6 +5,7 @@
 
 .page-footer {
   padding: 0px !important;
+
 }
 
 .brand-logo img {
@@ -13,4 +14,37 @@
 
 .brand-logo {
   height: 100% !important;
+}
+
+.search-card {
+  background-color: #F76D74 !important;
+  margin-top: 20px;
+}
+
+#search_input {
+  width: calc(100% - 33px) !important;
+  background-color: #F76D74 !important;
+  border: 0;
+  height: 40px;
+  padding-left: 5px;
+  color: white;
+  font-size: 22px;
+}
+
+#search_button {
+  background-color: #F76D74;
+  color: white;
+  border: 0;
+  width: 33px;
+  height: 40px;
+}
+
+
+.book-card {
+  background-color: #7e57c2;
+  color: white !important;
+}
+
+.book-card a {
+  background-color: #F76D74 !important;
 }
