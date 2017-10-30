@@ -10,8 +10,7 @@
 
     // This action is the main page of the application
     public function index() {
-
-
+      
       require_once("app/views/home/index.php");
     }
 

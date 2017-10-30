@@ -19,6 +19,11 @@
         unset($url[0]);
       }
 
+      // Check if the model file exists
+      if (file_exists('app/models/' . $this->controller . '.php')) {
+        require_once('app/models/' . $this->controller . '.php');
+      }
+
       //We now require the controller passed as a parameter and we create a new object of it
       require_once('app/controllers/' . $this->controller . '_controller.php');
       $this->controller = ucfirst($this->controller) . "Controller";

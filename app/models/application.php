@@ -239,12 +239,21 @@
 
 
     // This method will check if an model exists on the database
-    public function does_exist() {
+    public function does_exist($value = null) {
       $class = get_called_class();
       $db = DB::connect();
 
-      $response = $db->prepare('SELECT * FROM ' . $class . ' WHERE id = :id');
-      $response->bindParam(':id', $this->id);
+      if ($value == null) {
+        $value = 'id';
+      }
+
+      // If the object doesnt have the attribute passed on
+      if (!$this->has_attribute($value)) {
+        return false;
+      }
+
+      $response = $db->prepare('SELECT * FROM ' . $class . ' WHERE ' . $value . ' = :id');
+      $response->bindParam(':id', $this->$value);
       $response->execute();
 
       return (!empty($response->fetch(PDO::FETCH_ASSOC)));
@@ -306,11 +315,20 @@
 
 
     // This method will update an object from an existing table database
-    protected function update_object() {
+    protected function update_object($value = null) {
       $db = DB::connect();
       $class = get_called_class();
 
-      $obj = $db->prepare("SELECT * FROM " . $class . " WHERE id = :id");
+      if ($value == null) {
+        $value = 'id';
+      }
+
+      // If the object doesnt have the attribute passed on
+      if (!$this->has_attribute($value)) {
+        return false;
+      }
+
+      $obj = $db->prepare("SELECT * FROM " . $class . " WHERE " . $value . " = '" . $this->$value . "'");
       $obj->bindParam(':id', $this->id);
       $obj->execute();
 

@@ -9,7 +9,11 @@
             </div>
 
             <form action="<?php echo path('user/log_in'); ?>" method="post">
-
+              <?php // Show notice if there's an error
+                if (isset($notice)) {
+                  echo "<h6 style='color: red; margin-bottom: 30px' class='center-align'>$notice</h6>";
+                }
+                ?>
               <div class="container">
                 <div class="input-field">
                   <label for='username' class="activate">Username</label>
@@ -18,7 +22,7 @@
 
                 <div class="input-field">
                   <label for='password' class="activate">Password</label>
-                  <input type="text" name="password" id='password'>
+                  <input type="password" name="password" id='password'>
                 </div>
 
               </div>

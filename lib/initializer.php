@@ -16,6 +16,37 @@
     }
 
 
+
+    // Thiss function will check if all the values on the $source exist on the $arr
+    function all_params_have_values_from($arr, $source, $exceptions = []) {
+      foreach ($source as $value) {
+
+        // If the value is on the $exceptions array, then skip th eiteration
+        if (in_array($value, $exceptions)) {
+          continue;
+        }
+
+        // If the $value is not a key on the $arr and it has a value
+        if (!array_key_exists($value, $arr) || trim($arr[$value]) == '') {
+          return false;
+        }
+      }
+
+      return true;
+    }
+
+
+
+    // This function will return the value passed as an argument checking there is no errors or warnings
+    function clean($var) {
+      if (gettype($var) == 'array' || gettype($var) == 'object' || gettype($var) == 'resource' || gettype($var) == 'NULL' || gettype($var) == 'unknown type') {
+        return '';
+      }
+      return $var;
+    }
+
+
+
     // TODO not finished
     function render_partial($string) {
       include($_ENV['root_dir'] . 'app/views/');
