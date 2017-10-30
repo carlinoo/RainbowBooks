@@ -12,8 +12,8 @@
             echo "<li><a href='" . path('user/destroy_session') . "'>Logout</a></li>";
           } else {
             echo "<li><a href='" . $_ENV['root_path'] . "'>Home</a></li>";
-            echo "<li><a href='#'>Login</a></li>";
-            echo "<li><a href='#'>Sign Up</a></li>";
+            echo "<li><a href='" . path('user/log_in') . "'>Login</a></li>";
+            echo "<li><a href='" . path('user/sign_up') . "'>Sign Up</a></li>";
           }
         ?>
       </ul>
@@ -26,8 +26,8 @@
             echo "<li><a href='#'>" . path('user/destroy_session') . "</a></li>";
           } else {
             echo "<li><a href='" . $_ENV['root_path'] . "'>Home</a></li>";
-            echo "<li><a href='#'>Login</a></li>";
-            echo "<li><a href='#'>Sign Up</a></li>";
+            echo "<li><a href='" . path('user/log_in') . "'>Login</a></li>";
+            echo "<li><a href='" . path('user/sign_up') . "'>Sign Up</a></li>";
           }
         ?>
       </ul>

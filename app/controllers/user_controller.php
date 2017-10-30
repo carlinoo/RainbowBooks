@@ -11,12 +11,17 @@
     }
 
 
-    // This action will log in a user
+    // This action is where the user will be able to log in
     public function log_in() {
-      echo "<br><br>";
-      var_dump($_POST);
-      echo "<br><br>";
+      require_once('app/views/user/log_in.php');
     }
+
+
+    // This action is where the user will be able to sign up
+    public function sign_up() {
+      require_once('app/views/user/sign_up.php');
+    }
+
   }
 
  ?>

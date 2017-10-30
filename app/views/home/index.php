@@ -4,11 +4,11 @@
       <h3 style="margin-bottom: 50px;" class="center-align">PLEASE SIGN-IN TO RESERVE A BOOK</h3>
      <div class="row center-align">
         <div class="col s12 m6">
-          <a href="" class="btn-large  container">Log in</a>
+          <a href="<?php echo path('user/log_in'); ?>" class="btn-large  container">Log in</a>
         </div>
 
         <div class="col s12 m6">
-          <a href="" class="btn-large container">Sign Up</a>
+          <a href="<?php echo path('user/sign_up'); ?>" class="btn-large container">Sign Up</a>
         </div>
       </div>
     </div>

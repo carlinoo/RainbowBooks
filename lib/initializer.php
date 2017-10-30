@@ -16,6 +16,10 @@
     }
 
 
+    // TODO not finished
+    function render_partial($string) {
+      include($_ENV['root_dir'] . 'app/views/');
+    }
 
 
     // This function will return the current user
@@ -76,7 +80,7 @@
       if ($string == null || $string == '' || $string == '/' || $string == 'root') {
         header('Location: ' . path(''));
       } else {
-        header('Location: ' . path($string));  
+        header('Location: ' . path($string));
       }
     }
 
