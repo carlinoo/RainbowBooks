@@ -8,10 +8,14 @@
       return new $model;
     }
 
+
+
     // This function will generate the entire app
     function render() {
       $app = new App();
     }
+
+
 
 
     // This function will return the current user
@@ -22,6 +26,7 @@
         return null;
       }
     }
+
 
 
 
@@ -59,16 +64,35 @@
 
 
 
+    // This function will return the absolute path
+    function path($string) {
+      return  $_ENV['root_dir'] . $string;
+    }
+
+
+
+    // This function will redirect the user somewhere
+    function redirect_to($string = null) {
+      if ($string == null || $string == '' || $string == '/' || $string == 'root') {
+        header('Location: ' . path(''));
+      } else {
+        header('Location: ' . path($string));  
+      }
+    }
+
+
+
+
     // This function add assets to the application
     function add_assets() {
       // application.css
       if (file_exists('public/assets/stylesheets/application.css')) {
-        echo "<link rel='stylesheet' href='public/assets/stylesheets/application.css'>";
+        echo "<link rel='stylesheet' href='" . path("public/assets/stylesheets/application.css") . "'>";
       }
 
       // application.js
       if (file_exists('public/assets/javascripts/application.js')) {
-        echo "<script type='text/javascript' src='public/assets/javascripts/application.js'></script>";
+        echo "<script type='text/javascript' src='" .  path("public/assets/javascripts/application.js") . "'></script>";
       }
 
       // // #{controller_name}.css

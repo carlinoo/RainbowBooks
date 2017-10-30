@@ -54,4 +54,4 @@ function toggle_loader() {
   } else {
     loader.addClass('is-active');
   }
-}
+} // end send_ajax()
