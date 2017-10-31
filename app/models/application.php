@@ -83,7 +83,8 @@
 
     // This function will check if a class has certain attributes
     private static function has_attribute($attribute) {
-      $attributes = get_called_class()::get_column_names();
+      $class = get_called_class();
+      $attributes = $class::get_column_names();
 
       foreach ($attributes as $value) {
         if ($value == $attribute) {
