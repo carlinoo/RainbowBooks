@@ -152,11 +152,11 @@
     // This method will create a record if the caller doest exist on the database,
     // and if it does exist, it will update the record with its attributes,
     // returning wheather the action is successfull
-    public function save_record() {
+    public function save_record($value = null) {
 
       // Check if there is a record already
-      if ($this->does_exist()) {
-        return $this->update_record();
+      if ($this->does_exist($value)) {
+        return $this->update_record($value);
       } else {
         return $this->create_record();
       }
@@ -213,10 +213,19 @@
 
     // This method will update all the attributes of the object in the database
     // it returns true if the update is successfull
-    public function update_record() {
+    public function update_record($value = null) {
       $class = get_called_class();
 
       if (!$this->does_exist()) {
+        return false;
+      }
+
+      if ($value == null) {
+        $value = 'id';
+      }
+
+      // If the object doesnt have the attribute passed on
+      if (!$this->has_attribute($value)) {
         return false;
       }
 
@@ -225,8 +234,10 @@
       // We style the attributes to set them
       $conditions = $this->style_sql_attributes();
 
-      $sql = $db->prepare('UPDATE ' . $class . ' SET '. $conditions . ' WHERE id = :id');
-      $sql->bindParam(':id', $this->id);
+
+      // FIXME style_sql_attributes not working
+      $sql = $db->prepare("UPDATE " . $class . " SET ". $conditions . " WHERE " . $value . " = :id");
+      $sql->bindParam(':id', $this->$value);
       $sql->execute();
 
       return true;

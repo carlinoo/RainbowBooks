@@ -16,7 +16,7 @@
       <div class="card book-card">
         <div class="card-image">
             <img class="activator waves-effect waves-block waves-light" src="<?php echo image_path('book-cover.svg'); ?>">
-            <a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons" onclick="alert('Hello');">block</i></a>
+            <a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons" onclick="location.href = '<?php echo path('book/reserve/' . $book->id . ''); ?>';"><?php echo $book->reserved_by_icon(); ?></i></a>
           </div>
 
           <div class="card-content">
@@ -27,8 +27,12 @@
           </div>
 
           <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-        <p class=" grey-text text-darken-4">Here is some more information about this product that is only revealed once clicked on.</p>
+        <span class="card-title grey-text text-darken-4"><?php echo $book->title; ?><i class="material-icons right">close</i></span>
+        <p class=" grey-text text-darken-4"><b>Author:</b> <?php echo $book->author; ?></p>
+        <p class=" grey-text text-darken-4"><b>Edition</b> <?php echo $book->edition; ?></p>
+        <p class=" grey-text text-darken-4"><b>Year:</b> <?php echo $book->year; ?></p>
+        <p class=" grey-text text-darken-4"><b>ISBN:</b> <?php echo $book->ISBN; ?></p>
+        <p class=" grey-text text-darken-4"><b>Category:</b> <?php echo $book->category->description; ?></p>
       </div>
       </div>
     </div>
