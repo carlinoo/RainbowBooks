@@ -45,6 +45,12 @@
 
       $reservation->save_record('ISBN');
 
+      // Update the reservation on the book object
+
+      $book->reserved = 1;
+      $book->update_record('ISBN');
+
+      var_dump($book);
       redirect_to('book/index');
     }
   }

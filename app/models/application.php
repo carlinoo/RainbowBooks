@@ -235,6 +235,9 @@
       // We style the attributes to set them
       $conditions = $this->style_sql_attributes();
 
+      echo "<br><br>";
+       var_dump($conditions);
+      echo "<br><br>";
 
       // FIXME style_sql_attributes not working
       $sql = $db->prepare("UPDATE " . $class . " SET ". $conditions . " WHERE " . $value . " = :id");
@@ -311,7 +314,7 @@
 
           $conditions = $conditions . " $key=$value,";
         } else {
-          return false;
+          continue;
         }
       }
 

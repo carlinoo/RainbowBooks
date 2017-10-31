@@ -7,8 +7,8 @@
         <?php
           // Show when user is logged in
           if (user_signed_in()) {
-            echo "<li><a href='#'>Search</a></li>";
-            echo "<li><a href='#'>My Reservations</a></li>";
+            echo "<li><a href='" . path('book/index') . "'>Search</a></li>";
+            echo "<li><a href='" . path('book/index') . "'>My Reservations</a></li>";
             echo "<li><a href='" . path('user/destroy_session') . "'>Logout</a></li>";
           } else {
             echo "<li><a href='" . $_ENV['root_path'] . "'>Home</a></li>";
@@ -21,8 +21,8 @@
         <?php
           // Show when user is logged in
           if (user_signed_in()) {
-            echo "<li><a href='#'>Search</a></li>";
-            echo "<li><a href='#'>My Reservations</a></li>";
+            echo "<li><a href='" . path('book/index') . "'>Search</a></li>";
+            echo "<li><a href='" . path('book/index') . "'>My Reservations</a></li>";
             echo "<li><a href='#'>" . path('user/destroy_session') . "</a></li>";
           } else {
             echo "<li><a href='" . $_ENV['root_path'] . "'>Home</a></li>";

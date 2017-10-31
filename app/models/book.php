@@ -44,16 +44,7 @@
     }
 
 
-    // This method will return the icon if the book is reserved and if it is reserved by the current_user
-    // FIXME it only show if it is or isnt reserved
-    public function reserved_by_icon() {
-      if (!(boolean)$this->reserved) {
-        return 'add';
-      } else {
-        return 'block';
-      }
-
-    }
+    
   }
 
  ?>

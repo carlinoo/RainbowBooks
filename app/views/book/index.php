@@ -16,7 +16,9 @@
       <div class="card book-card">
         <div class="card-image">
             <img class="activator waves-effect waves-block waves-light" src="<?php echo image_path('book-cover.svg'); ?>">
-            <a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons" onclick="location.href = '<?php echo path('book/reserve/' . $book->id . ''); ?>';"><?php echo $book->reserved_by_icon(); ?></i></a>
+            <?php if (!$book->is_reserved()): ?>
+              <a href='<?php echo path('book/reserve/' . $book->id . ''); ?>' class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">add</i></a>
+            <?php endif; ?>
           </div>
 
           <div class="card-content">
