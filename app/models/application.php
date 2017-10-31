@@ -3,7 +3,7 @@
   class Application {
 
 
-    // this method will get all the objects of a table called from the child and return them
+    // this class method will get all the objects of a table called from the child and return them
     public static function all() {
       $class = get_called_class();
       $all = [];
@@ -58,6 +58,33 @@
       return new $class($result);
     } // end find()
 
+
+
+
+
+    // This class method will return a list of objects retrieved from the database
+    public static function where($condition = null) {
+      $class = get_called_class();
+      $db = DB::connect();
+      $items = [];
+
+      if ($condition == null) {
+        return null;
+      }
+
+
+      $results = $db->prepare('SELECT * FROM ' . $class . ' WHERE ' . $condition);
+      $results->bindParam(':condition', $condition);
+      $results->execute();
+      $results = $results->fetchAll();
+
+      foreach ($results as $result) {
+        $item = new $class($result);
+        $items[] = $item;
+      }
+
+      return $items;
+    }
 
 
 
