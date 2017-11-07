@@ -40,7 +40,7 @@ function send_ajax(type, url, data, callback = "") {
     typeof callback === 'function' && callback(data);
 
     // If there is an errors then...
-  }).error(function(data) {
+  }).fail(function(data) {
     addNotification(data.responseJSON.message);
   });
 }
@@ -54,4 +54,30 @@ function toggle_loader() {
   } else {
     loader.addClass('is-active');
   }
-} // end send_ajax()
+} // end toggle_loader()
+
+
+
+
+// This function will update the parameter on the url to the value passed as a paramter
+function replace_url_param(param, value) {
+  var newUrl = location.href.replace(param + "=" + getURLParameter(param), param + "=" + value);
+  window.location = newUrl;
+}
+
+
+
+
+// This function will return the parameter of the url that corresponds to sParam
+function getURLParameter(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }
+
+    return false;
+}

@@ -72,7 +72,6 @@
         return null;
       }
 
-
       $results = $db->prepare('SELECT * FROM ' . $class . ' WHERE ' . $condition);
       $results->bindParam(':condition', $condition);
       $results->execute();
@@ -86,6 +85,30 @@
       return $items;
     }
 
+
+
+
+    // This class method will return the number of records of a table where the $attribute is not null
+    public static function count($attribute = null) {
+      if ($attribute == null) {
+        $attribute = '*';
+      } else {
+        // Check if the table has the $attribute
+        if (!self::has_attribute($attribute)) {
+          return null;
+        }
+      }
+
+      $class = get_called_class();
+      $db = DB::connect();
+
+      $count = $db->prepare("SELECT COUNT(" . $attribute . ") AS count FROM $class");
+      $count->execute();
+      $result = $count->fetch(PDO::FETCH_ASSOC);
+
+      // return the count
+      return (int)$result['count'];
+    }
 
 
 

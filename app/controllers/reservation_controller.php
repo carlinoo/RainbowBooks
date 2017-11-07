@@ -5,9 +5,9 @@
     public function index() {
       $user = current_user();
 
-      $reservation = Reservation::where("username = '" . $user->username . "'");
+      $reservations = Reservation::where("username = '" . $user->username . "'");
 
-      var_dump($reservation);
+      var_dump($reservations);
     }
 
   }

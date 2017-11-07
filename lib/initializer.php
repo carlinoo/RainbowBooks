@@ -76,7 +76,6 @@
     }
 
 
-
     // This function will return wheather a user is signed in
     function user_signed_in() {
       model('user');
@@ -103,6 +102,26 @@
     // This function will return the absolute path
     function path($string) {
       return  $_ENV['root_dir'] . $string;
+    }
+
+
+
+    // This will echo $string of the $condition is true
+    function echo_if($string, $condition) {
+      if ($condition) {
+        echo $string;
+      } else {
+        echo "";
+      }
+    }
+
+
+
+    // This function will return a $value if the condition is true
+    function return_if($value, $condition) {
+      if ($condition) {
+        return $value;
+      }
     }
 
 

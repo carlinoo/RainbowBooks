@@ -16,19 +16,22 @@
   height: 100% !important;
 }
 
-.search-card {
+.search-card, .select-card {
   background-color: #F76D74 !important;
   margin-top: 20px;
 }
 
-#search_input {
-  width: calc(100% - 33px) !important;
+#search_input, #category {
   background-color: #F76D74 !important;
   border: 0;
   height: 40px;
   padding-left: 5px;
   color: white;
   font-size: 22px;
+}
+
+#search_input {
+  width: calc(100% - 33px) !important;
 }
 
 #search_button {
@@ -47,4 +50,14 @@
 
 .book-card a {
   background-color: #F76D74 !important;
+}
+
+
+.clickable {
+  cursor: pointer !important;
+}
+
+
+.disabled {
+  cursor: not-allowed;
 }
