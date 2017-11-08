@@ -40,13 +40,13 @@
           </div>
 
           <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4"><?php echo $book->title; ?><i class="material-icons right">close</i></span>
-        <p class=" grey-text text-darken-4"><b>Author:</b> <?php echo $book->author; ?></p>
-        <p class=" grey-text text-darken-4"><b>Edition</b> <?php echo $book->edition; ?></p>
-        <p class=" grey-text text-darken-4"><b>Year:</b> <?php echo $book->year; ?></p>
-        <p class=" grey-text text-darken-4"><b>ISBN:</b> <?php echo $book->ISBN; ?></p>
-        <p class=" grey-text text-darken-4"><b>Category:</b> <?php echo $book->category->description; ?></p>
-      </div>
+            <span class="card-title grey-text text-darken-4"><?php echo $book->title; ?><i class="material-icons right">close</i></span>
+            <p class=" grey-text text-darken-4"><b>Author:</b> <?php echo $book->author; ?></p>
+            <p class=" grey-text text-darken-4"><b>Edition</b> <?php echo $book->edition; ?></p>
+            <p class=" grey-text text-darken-4"><b>Year:</b> <?php echo $book->year; ?></p>
+            <p class=" grey-text text-darken-4"><b>ISBN:</b> <?php echo $book->ISBN; ?></p>
+            <p class=" grey-text text-darken-4"><b>Category:</b> <?php echo $book->category->description; ?></p>
+          </div>
       </div>
     </div>
   <?php endforeach; ?>

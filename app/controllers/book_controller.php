@@ -8,7 +8,7 @@
       // Get pagination information
       $number_of_books = Book::count();
       $number_of_pages = ceil($number_of_books/6);
-      
+
       // Get the page from the URL
       if (!isset($_GET['page']) || (int)$_GET['page'] < 1) {
         $page = 1;
@@ -67,7 +67,6 @@
 
 
 
-
     // This function will reserve a book by the current user
     public function reserve($id = null) {
       model('reservation');
@@ -111,6 +110,45 @@
 
       var_dump($book);
       redirect_to('book/index');
+    }
+
+
+
+
+    // This method will unreserve a book
+    public function unreserve($id = null) {
+      model('reservation');
+
+      if ($id == null) {
+        redirect_to('reservation/index');
+        return;
+      }
+
+      $book = Book::find((int)$id);
+      $reservation = Reservation::find($book->ISBN, 'ISBN');
+
+      // If the book is not reserved
+      if (!$book->reserved) {
+
+        // If there is a reservation with that book, destroy the reservation
+        if ($reservation != null) {
+          $reservation->destroy();
+        }
+
+        redirect_to('reservation/index');
+        return;
+      }
+
+      // Unreserve the book and update the record
+      $book->reserved = false;
+      $book->update_record('ISBN');
+
+      // We delete the reservation
+      if ($reservation != null) {
+        $reservation->destroy();
+      }
+
+      redirect_to('reservation/index');
     }
   }
 

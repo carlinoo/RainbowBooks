@@ -52,7 +52,7 @@
 
       // If the is no result
       if (!$result) {
-        return false;
+        return null;
       }
 
       return new $class($result);
@@ -285,14 +285,40 @@
       // We style the attributes to set them
       $conditions = $this->style_sql_attributes();
 
-      echo "<br><br>";
-       var_dump($conditions);
-      echo "<br><br>";
-
       // FIXME style_sql_attributes not working
       $sql = $db->prepare("UPDATE " . $class . " SET ". $conditions . " WHERE " . $value . " = :id");
       $sql->bindParam(':id', $this->$value);
       $sql->execute();
+
+      return true;
+    }
+
+
+
+
+    // This function will destroy an element on the database
+    public function destroy($primary_key = null) {
+      $class = get_called_class();
+
+      // If the class doesnt exist on the database
+      if (!$this->does_exist()) {
+        return false;
+      }
+
+      if ($primary_key == null) {
+        $primary_key = 'id';
+      }
+
+      // Check if the class has the attribute $primary_key
+      if (!$class::has_attribute($primary_key)) {
+        return false;
+      }
+
+      $db = DB::connect();
+
+      $destroy = $db->prepare("DELETE FROM $class WHERE $primary_key = :pk");
+      $destroy->bindParam(':pk', $this->$primary_key);
+      $destroy->execute();
 
       return true;
     }
