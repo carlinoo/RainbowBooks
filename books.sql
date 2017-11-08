@@ -1,8 +1,8 @@
-titleINSERT INTO Book (ISBN, title, author, edition, year, category_id_id, reserved) VALUES
+INSERT INTO Book (ISBN, title, author, edition, year, category_id, reserved) VALUES
                  ('23472-8729', 'Exploring Peru', 'Stephanue Birchi', 4, 2005, 5, 0);
 
 INSERT INTO Book (ISBN, title, author, edition, year, category_id, reserved) VALUES
-                 (''237-34823, 'Business Strategy', 'Joe Peppard', 2, 2002, 2, 0);
+                 ('237-34823', 'Business Strategy', 'Joe Peppard', 2, 2002, 2, 0);
 
 INSERT INTO Book (ISBN, title, author, edition, year, category_id, reserved) VALUES
                  ('23u8-923849', 'A Guide to Nutrition', 'John Thorpe', 2, 1997, 1, 0);

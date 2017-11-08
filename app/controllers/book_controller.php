@@ -8,7 +8,8 @@
       // Get pagination information
       $number_of_books = Book::count();
       $number_of_pages = ceil($number_of_books/6);
-
+      
+      // Get the page from the URL
       if (!isset($_GET['page']) || (int)$_GET['page'] < 1) {
         $page = 1;
       } else {

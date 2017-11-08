@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="<?php echo path("public/assets/stylesheets/add-ons/loader.css"); ?>">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <?php add_assets(); ?>
+    <link rel="shortcut icon" href="">
+
   </head>
 
   <body>
