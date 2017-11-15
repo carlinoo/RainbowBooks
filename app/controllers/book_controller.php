@@ -4,10 +4,6 @@
 
     // This action will display all the books available in the bookstore
     public function index() {
-      //var_dump(json_encode(Book::all()));
-      // Get pagination information
-      $number_of_books = Book::count();
-      $number_of_pages = ceil($number_of_books/6);
 
       // Get the page from the URL
       if (!isset($_GET['page']) || (int)$_GET['page'] < 1) {
@@ -45,7 +41,9 @@
 
       // Get the books with category and author or title
       $books = Book::where($cat_clause . " AND " . $search_clause . $limit);
+      $number_of_books = Book::count($cat_clause . " AND " . $search_clause);
 
+      $number_of_pages = ceil($number_of_books/6);
       // We set if there is a next_page or if there is a previous_page
       if ($page == 1) {
         $previous_page = false;
@@ -108,7 +106,6 @@
       $book->reserved = 1;
       $book->update_record('ISBN');
 
-      var_dump($book);
       redirect_to('book/index');
     }
 

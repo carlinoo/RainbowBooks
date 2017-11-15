@@ -44,12 +44,14 @@
 
 
 .book-card {
-  background-color: #7e57c2;
-  color: white !important;
+  background-color: rgba(245 ,220, 220, 1);
+  color: black !important;
 }
 
-.book-card a {
-  background-color: #F76D74 !important;
+.book-card .btn-flat {
+  margin-right: 0px !important;
+  color: grey !important;
+  padding: 0 !important;
 }
 
 

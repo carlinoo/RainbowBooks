@@ -1,3 +1,4 @@
+
 <div class="row">
   <form id="search_form" action="<?php echo path('book/index'); ?>" method="get">
     <div class="col s12 m5 l4 offset-m1 offset-l2">
@@ -27,9 +28,7 @@
       <div class="card book-card">
         <div class="card-image">
             <img class="activator waves-effect waves-block waves-light" src="<?php echo image_path('book-cover.svg'); ?>">
-            <?php if (!$book->is_reserved()): ?>
-              <a href='<?php echo path('book/reserve/' . $book->id . ''); ?>' class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">add</i></a>
-            <?php endif; ?>
+
           </div>
 
           <div class="card-content">
@@ -37,6 +36,14 @@
             <p><?php echo $book->author; ?></p>
             <p>Edition <?php echo $book->edition; ?></p>
             <p><?php echo $book->year; ?></p>
+          </div>
+
+          <div class="card-action right-align">
+            <?php if (!$book->is_reserved()) { ?>
+              <a class="btn" href='<?php echo path('book/reserve/' . $book->id . ''); ?>'>Book</a>
+            <?php } else { ?>
+              <a class="btn-flat" >Unavailable</a>
+            <?php } ?>
           </div>
 
           <div class="card-reveal">
@@ -56,7 +63,7 @@
   <li class="waves-effect <?php echo_if('disabled', !$previous_page); ?>"><a class="<?php echo_if('clickable', $next_page); ?>" onclick="replace_url_param('page', Number(getURLParameter('page')) - 1);"><i class="material-icons">chevron_left</i></a></li>
   <?php
   for($i = 1; $i < $number_of_pages + 1; $i++) {
-    echo "<li class='" . return_if('active', $i == $page) . "'><a class='clickable' onclick=\"replace_url_param('page', " . $i . ");\">" . $i . "</a></li>";
+    echo "<li class='" . return_if('active', $i == $page) . "'><a class='clickable' onclick=\"replace_url_param('page', $i);\">" . $i . "</a></li>";
   }
   ?>
   <li class="waves-effect <?php echo_if('disabled', !$next_page); ?>"><a class="<?php echo_if('clickable', $next_page); ?>" onclick="replace_url_param('page', Number(getURLParameter('page')) + 1);"><i class="material-icons">chevron_right</i></a></li>

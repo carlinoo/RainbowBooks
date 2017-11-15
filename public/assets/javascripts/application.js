@@ -61,7 +61,20 @@ function toggle_loader() {
 
 // This function will update the parameter on the url to the value passed as a paramter
 function replace_url_param(param, value) {
-  var newUrl = location.href.replace(param + "=" + getURLParameter(param), param + "=" + value);
+
+  // Check if the parameter param is on the link
+  if (getURLParameter(param) !== false) {
+    var newUrl = location.href.replace(param + "=" + getURLParameter(param), param + "=" + value);
+  } else {
+    // check if the string has any other get variables
+    if (string_has_char(location.href, '?')) {
+      var newUrl = location.href + "&" + param + "=" + value;
+    } else {
+      var newUrl = location.href + "?" + param + "=" + value;
+    }
+
+  }
+
   window.location = newUrl;
 }
 
@@ -80,4 +93,11 @@ function getURLParameter(sParam) {
     }
 
     return false;
+}
+
+
+
+// This function will return wheather a string has a value or not
+function string_has_char(str, char) {
+  return !(str.split(char).length === 1);
 }
