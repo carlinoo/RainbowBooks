@@ -3,7 +3,7 @@
   <form id="search_form" action="<?php echo path('book/index'); ?>" method="get">
     <div class="col s12 m5 l4 offset-m1 offset-l2">
       <div class="card search-card">
-        <input type="text" name="search_input" value="<?php if(isset($search_input)) { echo $search_input; } ?>" id="search_input" class="browser-default search_input"></input>
+        <input type="text" placeholder="Search by Title or Author" name="search_input" value="<?php if(isset($search_input)) { echo $search_input; } ?>" id="search_input" class="browser-default search_input"></input>
         <button class="right" id="search_button" ><i class="material-icons">search</i></button>
       </div>
     </div>

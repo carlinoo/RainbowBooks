@@ -30,4 +30,21 @@
   </div>
 
   <?php endforeach; ?>
+
+  <?php if (count($reservations) == 0) { ?>
+    <div class="container">
+      <div class="col s12">
+        <br>
+        <div class="card">
+          <div class="card-content center-align">
+            <span class="card-title">You do not have any Reservations at the moment.</span>
+          </div>
+
+          <div class="card-action">
+            <a href="<?php echo path('book/index'); ?>">Find Books</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php } ?>
 </div>
