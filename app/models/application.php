@@ -291,7 +291,6 @@
       // We style the attributes to set them
       $conditions = $this->style_sql_attributes();
 
-      // FIXME style_sql_attributes not working
       $sql = $db->prepare("UPDATE " . $class . " SET ". $conditions . " WHERE " . $value . " = :id");
       $sql->bindParam(':id', $this->$value);
       $sql->execute();
@@ -391,6 +390,8 @@
           if (gettype($value) == 'object') {
             $value = $value->id;
           } elseif (gettype($value) == 'string') {
+            $value = "'" . $value . "'";
+          } elseif (gettype($value) == 'boolean') {
             $value = "'" . $value . "'";
           }
 

@@ -5,7 +5,6 @@
     <div class="card book-card">
       <div class="card-image">
         <img class="activator waves-effect waves-block waves-light" src="<?php echo image_path('book-cover.svg'); ?>">
-        <a href='<?php echo path('book/unreserve/' . $reservation->book->id . ''); ?>' class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">close</i></a>
       </div>
 
       <div class="card-content">
@@ -13,6 +12,10 @@
         <p><?php echo $reservation->book->author; ?></p>
         <p>Edition <?php echo $reservation->book->edition; ?></p>
         <p><?php echo $reservation->book->year; ?></p>
+      </div>
+
+      <div class="card-action right-align">
+        <a href="<?php echo path('book/unreserve/' . $reservation->book->id . ''); ?>" class="btn">Un-Reserve</a>
       </div>
 
       <div class="card-reveal">

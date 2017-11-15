@@ -42,7 +42,7 @@
             <?php if (!$book->is_reserved()) { ?>
               <a class="btn" href='<?php echo path('book/reserve/' . $book->id . ''); ?>'>Book</a>
             <?php } else { ?>
-              <a class="btn-flat" >Unavailable</a>
+              <a class="btn-flat not-clickable">Unavailable</a>
             <?php } ?>
           </div>
 
