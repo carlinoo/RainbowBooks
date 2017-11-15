@@ -4,7 +4,7 @@
 
     // This action will display all the books available in the bookstore
     public function index() {
-
+      //var_dump(json_encode(Book::all()));
       // Get pagination information
       $number_of_books = Book::count();
       $number_of_pages = ceil($number_of_books/6);
