@@ -44,7 +44,7 @@
       }
 
       // If there is a user with that username
-      if (User::find($this->username, 'username') !== false) {
+      if (User::find($this->username, 'username') !== null) {
         return "Username already taken";
       }
 
